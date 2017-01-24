@@ -1,0 +1,7 @@
+.DS_Store
+var
+vendor
+vendor/bin
+composer.lock
+composer.phar
+/vendor
