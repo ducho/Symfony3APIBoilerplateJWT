@@ -1,4 +1,5 @@
 # Symfony3APIBoilerplateJWT
+
 Example with Symfony 3 API Boilerplate JWT
 
 ## Install with Composer
@@ -19,5 +20,5 @@ Example with Symfony 3 API Boilerplate JWT
 ## Generate Token Authentication with Curl
 
 ```
-	$ curl -H 'content-type: application/json' -v -X  GET http://127.0.0.1:8000/api/token -H 'Authorization:Basic username:password'
+	$ curl -H 'content-type: application/json' -v -X  POST http://127.0.0.1:8000/api/token -H 'Authorization:Basic username:password'
 ```
