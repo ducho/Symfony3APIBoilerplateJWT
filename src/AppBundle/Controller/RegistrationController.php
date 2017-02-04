@@ -10,7 +10,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use AppBundle\Form\UserType;
+use AppBundle\Form\ForgotPasswordType;
 use AppBundle\Entity\User;
+use AppBundle\Utils\PasswordGenerator;
+use AppBundle\Event\EmailForgotPasswordEvent;
 
 class RegistrationController extends FOSRestController
 {
@@ -23,15 +26,10 @@ class RegistrationController extends FOSRestController
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-        $data = $request->request->all();
 
-        if (!$form->isValid()) {
+        if ($form->isValid()) {
             $password = $this->get('security.password_encoder')
                 ->encodePassword($user, $user->getPassword());
-            $user->setName($data['name']);
-            $user->setSurname($data['surname']);
-            $user->setUsername($data['username']);
-            $user->setEmail($data['email']);
             $user->setPassword($password);
             $user->setRoles(['ROLE_ADMIN']);
             $em = $this->getDoctrine()->getManager();
@@ -43,6 +41,34 @@ class RegistrationController extends FOSRestController
 
         throw new HttpException(400, "Invalid data");
     }
+
+    /**
+     * @Route(path="api/forgotPassword", name="forgot_password")
+     * @Method("POST")
+     */
+    public function postForgotPasswordAction(Request $request)
+    {
+        $user = new User();
+        $passwordGenerator = new PasswordGenerator();
+        $form = $this->createForm(ForgotPasswordType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $email = $request->request->get('email');
+            $em = $this->getDoctrine()->getManager();
+            $userRepository = $em->getRepository(User::class)->findOneBy(['email' => $email]);
+            $userRepository->setPassword($passwordGenerator->generatePassword());
+
+			$event = new EmailForgotPasswordEvent($userRepository);
+            $dispatcher = $this->get('event_dispatcher');
+			$dispatcher->dispatch(EmailForgotPasswordEvent::NAME, $event);
+
+			$em->persist($userRepository);
+            $em->flush();
+
+            return new JsonResponse(['status' => 'ok']);
+        }
+
+        throw new HttpException(400, "Invalid data");
+    }
 }
-
-

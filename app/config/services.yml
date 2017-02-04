@@ -11,3 +11,10 @@ services:
         class: AppBundle\Security\JwtAuthenticator
         arguments: ['@doctrine.orm.entity_manager', '@lexik_jwt_authentication.encoder']
 
+    app.mail_forgot_password_listener:
+        class: AppBundle\EventListener\MailForgotPasswordListener
+        arguments:
+            mailer: "@mailer"
+        tags:
+            - { name: kernel.event_listener, event: forgot.password.event.email_fogot_password_event, method: onMailForgotPasswordEvent }
+

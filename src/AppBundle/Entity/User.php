@@ -20,13 +20,13 @@ class User implements UserInterface
 
     /**
      *
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string")
      */
     private $name;
 
     /**
      *
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string")
      */
     private $surname;
 
@@ -41,14 +41,14 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string")
      */
     private $password;
 
     /**
      * @ORM\Column(type="json_array")
      */
-    private $roles = [];
+    private $roles;
 
     /**
      * Get id
@@ -193,7 +193,7 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles)
+    public function setRoles($roles)
     {
         $this->roles = $roles;
     }
