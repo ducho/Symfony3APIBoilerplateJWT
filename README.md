@@ -1,5 +1,7 @@
 # Symfony3APIBoilerplateJWT
 
+[![Build Status](https://travis-ci.org/Tony133/Symfony3APIBoilerplateJWT.svg?branch=master)](https://travis-ci.org/Tony133/Symfony3APIBoilerplateJWT)
+
 Example with Symfony 3 API Boilerplate JWT
 
 ## Install with Composer
