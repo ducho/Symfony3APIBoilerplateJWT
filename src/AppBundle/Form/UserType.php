@@ -41,6 +41,4 @@ class UserType extends AbstractType
     {
         return '';
     }
-
-
 }

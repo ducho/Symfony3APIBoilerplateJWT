@@ -9,30 +9,30 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use AppBundle\Form\UserType;
 use AppBundle\Form\ChangePasswordType;
 use AppBundle\Entity\User;
 use AppBundle\Utils\PasswordGenerator;
 
-class RegistrationController extends FOSRestController
+class ChangePasswordController extends FOSRestController
 {
     /**
-     * @Route(path="/api/register", name="registration")
-     * @Method("POST")
+     * @Route(path="api/changePassword", name="change_password")
      */
-    public function postRegisterAction(Request $request)
+    public function postChangePasswordAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(ChangePasswordType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $password = $this->get('security.password_encoder')
-                ->encodePassword($user, $user->getPassword());
-            $user->setPassword($password);
-            $user->setRoles(['ROLE_ADMIN']);
+            $email = $request->request->get('email');
+            $password = $form->getData()->getPassword();
+            $passwordNew = $this->get('security.password_encoder')
+                               ->encodePassword($user, $user->getPassword());
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
+            $userRepository = $em->getRepository(User::class)->findOneBy(['email' => $email]);
+            $userRepository->setPassword($passwordNew);
+            $em->persist($userRepository);
             $em->flush();
 
             return new JsonResponse(['status' => 'ok']);

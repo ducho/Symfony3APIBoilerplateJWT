@@ -2,12 +2,12 @@
 parameters:
     database_host: 127.0.0.1
     database_port: 3306
-    database_name: mydatabae
+    database_name: mydatabase
     database_user: myuser
     database_password: mypassword
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    mailer_user: null
+    mailer_user: null 
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
     jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem'
