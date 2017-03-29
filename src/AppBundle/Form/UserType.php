@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use AppBundle\Entity\User;
 
 class UserType extends AbstractType
 {
@@ -15,11 +16,11 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, array('label'=> 'name'))
-            ->add('surname', TextType::class, array('label'=> 'surname'))
-            ->add('username',TextType::class, array('label'=> 'username'))
-            ->add('email', TextType::class, array('label'=> 'email'))
-            ->add('password', TextType::class, array('label'=> 'password'))
+            ->add('name', TextType::class, ['label'=> 'name'])
+            ->add('surname', TextType::class, ['label'=> 'surname'])
+            ->add('username',TextType::class, ['label'=> 'username'])
+            ->add('email', TextType::class, ['label'=> 'email'])
+            ->add('password', TextType::class, ['label'=> 'password'])
         ;
     }
 
@@ -29,7 +30,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\User',
+            'data_class' => User::class,
             'csrf_protection'   => false,
         ));
     }
