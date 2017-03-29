@@ -28,7 +28,9 @@ security:
     access_control:
         - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/secure, roles: ROLE_ADMIN }
+
+        # Example for resources with JSON Web Token authentication
+        #- { path: ^/api/secure, roles: ROLE_ADMIN }
 
             # http_basic: ~
             # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
