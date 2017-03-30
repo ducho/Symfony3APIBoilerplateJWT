@@ -2,15 +2,13 @@
 
 [![Build Status](https://travis-ci.org/Tony133/Symfony3APIBoilerplateJWT.svg?branch=master)](https://travis-ci.org/Tony133/Symfony3APIBoilerplateJWT)
 
-An API Boilerplate to create a ready-to-use REST API in seconds with Symfony 3
+An API Boilerplate to create a ready-to-use REST API in seconds with Symfony 3.2
 
 ## Install with Composer
 
 ```
-	$ curl -s http://getcomposer.org/installer | php
-	$ php composer.phar install	 or  composer install 
+    $ composer create-project tony133/symfony-api-boilerplate-jwt myProject
 ```
-
 ## Generate the SSH keys
 
 ```
