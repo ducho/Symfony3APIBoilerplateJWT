@@ -3,6 +3,7 @@
     "license": "MIT",
     "type": "project",
     "description": "An API Boilerplate to create a ready-to-use REST API in seconds with Symfony 3",
+    "keywords": ["symfony", "api", "boilerplate", "jwt"],
     "autoload": {
         "psr-4": { "": "src/" },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
@@ -63,9 +64,6 @@
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
-        },
-        "branch-alias": {
-            "dev-master": "3.2-dev"
         }
     }
 }
