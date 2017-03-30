@@ -25,7 +25,7 @@ class LoginControllerTest extends WebTestCase
                 'adminpass'
             ],
             'json' => [
-                'token'     => 'my_token',
+                'token' => 'my_token',
             ]
         ]);
 
