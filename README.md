@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Tony133/Symfony3APIBoilerplateJWT.svg?branch=master)](https://travis-ci.org/Tony133/Symfony3APIBoilerplateJWT)
 
-Example with Symfony 3 API Boilerplate JWT
+An API Boilerplate to create a ready-to-use REST API in seconds with Symfony 3
 
 ## Install with Composer
 
