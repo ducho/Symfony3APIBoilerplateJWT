@@ -12,6 +12,7 @@
 /var/sessions/*
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
+.web-server-pid
 vendor
 vendor/bin
 composer.lock
