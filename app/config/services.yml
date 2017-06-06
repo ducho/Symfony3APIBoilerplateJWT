@@ -13,8 +13,7 @@ services:
 
     app.mail_forgot_password_listener:
         class: AppBundle\EventListener\MailForgotPasswordListener
-        arguments:
-            mailer: "@mailer"
+        arguments: ["@mailer"]
         tags:
             - { name: kernel.event_listener, event: forgot.password.event.email_fogot_password_event, method: onMailForgotPasswordEvent }
 
