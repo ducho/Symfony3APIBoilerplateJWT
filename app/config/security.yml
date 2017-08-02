@@ -20,10 +20,10 @@ security:
             pattern:   ^/api
             anonymous: true
             http_basic: ~
-            stateless: true
+            #stateless: true
             guard:
                 authenticators:
-                    - app.jwt_token_authenticator
+                    - AppBundle\Security\JwtAuthenticator
 
     access_control:
         - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
