@@ -10,9 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use AppBundle\Form\UserType;
-use AppBundle\Form\ChangePasswordType;
 use AppBundle\Entity\User;
-use AppBundle\Utils\PasswordGenerator;
 
 class RegistrationController extends FOSRestController
 {
