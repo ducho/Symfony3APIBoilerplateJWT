@@ -1,5 +1,5 @@
 {
-    "name": "tony133/symfony-api-boilerplate-jwt",
+    "name": "tony133/symfony3-api-boilerplate-jwt",
     "license": "MIT",
     "type": "project",
     "description": "An API Boilerplate to create a ready-to-use REST API in seconds with Symfony 3",
