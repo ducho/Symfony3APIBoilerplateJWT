@@ -11,7 +11,6 @@ use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use AppBundle\Form\ChangePasswordType;
 use AppBundle\Entity\User;
-use AppBundle\Utils\PasswordGenerator;
 
 class ChangePasswordController extends FOSRestController
 {
