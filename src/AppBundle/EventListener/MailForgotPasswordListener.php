@@ -19,10 +19,10 @@ class MailForgotPasswordListener
         $password = $event->getUser()->getPassword();
 
         $message = \Swift_Message::newInstance()
-            ->setSubject('Change Password Success!')
+            ->setSubject('Request Reset Password Successfully!')
             ->setFrom($email)
             ->setTo($email)
-            ->setBody('Change Password Success! This is your new password: ' . $password)
+            ->setBody('Request Reset Password Successfully! This is your new password: ' . $password)
     /*
             ->setBody(
                 $this->renderView(
